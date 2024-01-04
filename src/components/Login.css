@@ -1,0 +1,97 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #0D714D; /* Darker green color */
+    color: white;
+    text-align: center; /* Center text content */
+  }
+  
+  .login h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .login form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .login form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+  
+  .login form input[type="submit"] {
+    background-color: #0D714D;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  
+  .login form input[type="submit"]:hover {
+    background-color: #075139;
+  }
+  
+  .login p.error {
+    color: red;
+    margin-top: -10px;
+  }
+  
+  .login p.signup-link {
+    margin-top: 20px;
+    font-size: 16px;
+  }
+  
+  .login a.signup {
+    color: #ffcc00;
+    text-decoration: underline;
+  }
+  
+  .login a.signup:hover {
+    color: #e6b800;
+  }
+  #forgotpass{
+    margin-bottom: 30px;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    display: block;
+    text-align: center; /* Center text content */
+  }
+  #noaccount {
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    display: block;
+    text-align: center; /* Center text content */
+  }
+  
+  @media (max-width: 600px) {
+    .login form {
+      width: 80%;
+    }
+  }
+  
