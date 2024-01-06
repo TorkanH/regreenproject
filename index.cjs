@@ -73,12 +73,12 @@ app.post("/login", async (req, res) => {
       const passwordsMatch = await bcrypt.compare(password, user.password);
 
       if (passwordsMatch) {
-        res.json("success");
-      } else {
-        res.json("incorrectpassword");
+        res.json({ status: "success", user: { username: user.username, email: user.email } });
+      }  else {
+        res.status(401).json({ error: "Incorrect password" });
       }
-    } else {
-      res.json("notexist");
+    }  else {
+      res.status(404).json({ error: "User not found" });
     }
   } catch (e) {
     console.error(e);
@@ -102,14 +102,16 @@ app.post("/signup", upload.single("profilePicture"), async (req, res,next) => {
   const { username, email, password, confirmpassword } = req.body;
   
   try {
-    if (!confirmpassword) {
-      throw new Error("Confirmation password is required");
+    if (password !== confirmpassword) {
+      throw new Error("Passwords do not match");
     }
+
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
 
     const data = {
       username: username,
       email: email,
-      password: await bcrypt.hashSync(password, saltRounds),
+      password: hashedPassword,
       confirmpassword: confirmpassword,
       profilePicture: req.file ? req.file.filename : null,
     };
